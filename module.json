@@ -1,0 +1,35 @@
+{
+    "name": "ecommerce-social-commerce-filament",
+    "version": "0.1.0",
+    "description": "The social shops desk: shops on social networks, the items each network is believed to hold, the status it reports back, and the queue of items it must stop holding.",
+    "category": "presentation",
+    "provider": "Liberu\\Ecommerce\\SocialCommerce\\Filament\\SocialCommerceFilamentServiceProvider",
+    "requires": {
+        "packages": {
+            "liberusoftware/ecommerce-social-commerce": "^0.1"
+        }
+    },
+    "presentation": {
+        "filament": {
+            "admin": [
+                "Liberu\\Ecommerce\\SocialCommerce\\Filament\\SocialCommercePlugin"
+            ]
+        }
+    },
+    "features": [
+        "A withdrawal queue counts every item a network is believed to hold and must not, across every shop the merchant has",
+        "The queue is swept by one published withdrawal per row, and a sweep that sent nothing never reports as one that worked",
+        "A re-read reports four outcomes apart: it answered about all of them, about some, about none because there were none, or it could not be asked at all",
+        "A re-read that could not happen is never green and never counted as zero updates",
+        "The secret is entered and never read back: no screen, no column and no infolist entry reaches it",
+        "Connecting a shop is a named action calling the domain, so Filament's own create and edit machinery is closed on every resource",
+        "The network is typed as a validated slug, because the domain ships no network enum and a new network is a new adapter",
+        "No listing is deletable from this panel, because deleting the record would leave the item live on the network and unrecorded",
+        "An unrecognised remote status is rendered as unrecognised, never as still uploading",
+        "A price with no stored currency renders as nothing, and a stock flag never sent renders as nothing rather than out of stock",
+        "No title, description, image or link is shown, because the domain stores no copy of the content it sent",
+        "Republication is not offered, for the same reason: this panel has no content to re-send and will not invent any",
+        "Every screen states its merchant, and a reference belonging to another merchant is not found",
+        "Every unpublished Filament ability is forced closed by name, per resource and per relation manager"
+    ]
+}
